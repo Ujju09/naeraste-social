@@ -17,6 +17,8 @@ export default function Resource({ records }) {
       <Head>
         <title>{records.fields["Chapter Name"]}</title>
         <link rel="icon" href="/favicon.ico" />
+        <link rel="manifest" href="/site.webmanifest" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
       </Head>
       <main className={styles.main}>
         <h1 className={styles.title}>naeRaste │ ✍️</h1>
