@@ -6,6 +6,8 @@ import Head from "next/head";
 import Script from "next/script";
 
 export default function Resource({ records }) {
+  const helpText = `I want to share ${records.fields["Chapter Name"]} questions with you.`;
+  const encoded = encodeURI(helpText);
   return (
     <div className={styles.container}>
       <Script
@@ -30,20 +32,44 @@ export default function Resource({ records }) {
         >
           {records.fields["Chapter Name"]}
         </p>
-        <orbit-reviewarea
-          color="violet"
-          style={{
-            width: "100%",
-          }}
-        >
-          {records.fields["Question (from Notes)"].map((question, index) => (
-            <orbit-prompt
-              question={question}
-              answer={records.fields["Answer (from Notes)"][index]}
-              key={index}
-            ></orbit-prompt>
-          ))}
-        </orbit-reviewarea>
+        {records.fields.hasOwnProperty("Question (from Notes)") === false ? (
+          <>
+            Nothing here yet!
+            <Image src="/silence.png" alt="No image" width={200} height={200} />
+            <h2>Want to contribute?</h2>
+            <p>
+              Send your questions to{" "}
+              <span>
+                <button className={styles.button}>
+                  <a
+                    href={`https://wa.me/919755992478?text=${encoded}`}
+                    style={{
+                      color: "white",
+                      textDecoration: "none",
+                    }}
+                  >
+                    Ujjwal ↗
+                  </a>
+                </button>
+              </span>
+            </p>
+          </>
+        ) : (
+          <orbit-reviewarea
+            color="orange"
+            style={{
+              width: "100%",
+            }}
+          >
+            {records.fields["Question (from Notes)"].map((question, index) => (
+              <orbit-prompt
+                question={question}
+                answer={records.fields["Answer (from Notes)"][index]}
+                key={index}
+              ></orbit-prompt>
+            ))}
+          </orbit-reviewarea>
+        )}
       </main>
     </div>
   );
@@ -66,9 +92,3 @@ export async function getServerSideProps(context) {
     props: { records: records }, // will be passed to the page component as props
   };
 }
-
-// {records.fields["Question (from Notes)"].map((record, index) => (
-//   <div key={index}>
-//     <orbit-prompt question={record} answer="Answer"></orbit-prompt>
-//   </div>
-// ))}
