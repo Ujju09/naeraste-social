@@ -16,7 +16,7 @@ const Resource = ({ records }) => {
       </Head>
       <main className={styles.main}>
         <h1 className={styles.title}>naeRaste │ ✍️</h1>
-        <p>Strengthen your memory by reviewing these chapters.</p>
+
         <div className={styles.grid}>
           {records.map((record, index) => (
             <Link
@@ -28,9 +28,7 @@ const Resource = ({ records }) => {
                 },
               }}
             >
-              <div className={styles.card}>
-                {record.fields["Chapter Name"]} &rarr;
-              </div>
+              <div className={styles.card}>{record.fields["Chapter Name"]}</div>
             </Link>
           ))}
         </div>

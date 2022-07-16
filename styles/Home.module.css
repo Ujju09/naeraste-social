@@ -50,7 +50,7 @@
   font-size: 2rem;
 
   width: 100vw;
-  background-color: #1B3EA8;
+  background-color: #ea5815;
   color: white;
   font-weight: 300;
 }
@@ -88,12 +88,13 @@
 .card {
   margin: 1rem;
   padding: 1.5rem;
+  display: flex;
   text-align: left;
   color: inherit;
   background-color: aliceblue;
   text-decoration: none;
   border: 1px solid #eaeaea;
-  border-radius: 10px;
+  border-radius: 40px;
   transition: color 0.15s ease, border-color 0.15s ease;
   max-width: 300px;
 }
@@ -101,9 +102,7 @@
 .iframe{
   width: 100%;
   height: 500px;
-
   border-radius: 10px;
-  
   margin-top: 1rem;
   margin-bottom: 1rem;
 
@@ -112,8 +111,9 @@
 .card:hover,
 .card:focus,
 .card:active {
-  color: #0070f3;
-  border-color: #0070f3;
+  color: #EA5815;
+  border-color: #EA5815;
+  cursor: pointer;
 }
 
 .card h2 {
@@ -145,6 +145,9 @@
     width: 100%;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+  }
+  .card{
+    width: 100%;
   }
 }
 

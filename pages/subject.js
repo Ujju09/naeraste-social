@@ -57,20 +57,38 @@ export default function Resource({ records }) {
             </p>
           </>
         ) : (
-          <orbit-reviewarea
-            color="orange"
-            style={{
-              width: "100%",
-            }}
-          >
-            {records.fields["Question (from Notes)"].map((question, index) => (
-              <orbit-prompt
-                question={question}
-                answer={records.fields["Answer (from Notes)"][index]}
-                key={index}
-              ></orbit-prompt>
-            ))}
-          </orbit-reviewarea>
+          <>
+            <div
+              style={{
+                display: "flex",
+                marginBottom: "1rem",
+              }}
+            >
+              <Image
+                src="/orbit.svg"
+                alt="Orbit image"
+                width={100}
+                height={100}
+              />
+              <p>Deeply internalize ideas and facts through periodic review.</p>
+            </div>
+            <orbit-reviewarea
+              color="orange"
+              style={{
+                width: "100%",
+              }}
+            >
+              {records.fields["Question (from Notes)"].map(
+                (question, index) => (
+                  <orbit-prompt
+                    question={question}
+                    answer={records.fields["Answer (from Notes)"][index]}
+                    key={index}
+                  ></orbit-prompt>
+                )
+              )}
+            </orbit-reviewarea>
+          </>
         )}
       </main>
     </div>
