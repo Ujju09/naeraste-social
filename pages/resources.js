@@ -50,7 +50,7 @@ export async function getStaticProps() {
   const API_KEY = process.env.API_KEY;
   const TABLE_KEY = process.env.TABLE_KEY;
   const res = await fetch(
-    `https://api.airtable.com/v0/${TABLE_KEY}/Social?maxRecords=15&view=Grid%20view`,
+    `https://api.airtable.com/v0/${TABLE_KEY}/Social?maxRecords=100&view=Grid%20view`,
     {
       headers: { Authorization: `Bearer ${API_KEY}` },
     }
