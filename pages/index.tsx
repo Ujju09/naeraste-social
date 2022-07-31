@@ -4,7 +4,10 @@ import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import Link from 'next/link'
 import Newsletter from '../components/newsletter'
+import { useState } from 'react'
 const Home: NextPage = () => {
+  const grades = [9,10,11,12];
+  const [grade, setGrade] = useState(9);
   return (
     <div className={styles.container}>
       <Head>
@@ -23,9 +26,41 @@ const Home: NextPage = () => {
         </h1>
 
         <p className={styles.description}>
-          Class 9/Social Sciences</p>
+          social science <br/><span>
+          <label>select your class </label>  
+            <select style={{
+              width: '100px',
+              height: '40px',
+              borderRadius: '10px',
+              border: '1px solid #ccc',
+              padding: '5px',
+              fontSize: '1.5rem',
+              color: 'black',
+              backgroundColor: "#f5f5f5",
+             
+
+            }} onChange={
+              (e) => {
+                setGrade(parseInt(e.target.value));
+              }
+
+            }
+            defaultValue={grade}>
+          
+              {grades.map(grade => <option key={grade} value={grade}>{grade}</option>)}
+            </select>  
+          
+            </span></p>
         <div className={styles.grid}>
-          <Link href= "/resources" >
+        <Link href= {
+            {
+              pathname: '/resources',
+              query: {
+                grade: grade
+              }
+            }
+            
+          } >
             <a className={styles.card}>
             <Image src="/learn.svg" alt="LEarning resources" width={100} height={100}  priority/>
 

@@ -11,6 +11,7 @@
   justify-content: flex-start;
   align-items: center;
   font-family: 'Lexend', monospace;
+  background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
 }
 
 .footer {
@@ -50,7 +51,12 @@
   font-size: 2rem;
 
   width: 100vw;
-  background-color: #ea5815;
+  background: hsla(333, 100%, 53%, 1);
+
+background: linear-gradient(90deg, hsla(333, 100%, 53%, 1) 0%, hsla(33, 94%, 57%, 1) 100%);
+
+
+filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#FF0F7B", endColorstr="#F89B29", GradientType=1 );
   color: white;
   font-weight: 300;
 }
