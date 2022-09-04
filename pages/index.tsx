@@ -88,7 +88,7 @@ const Home: NextPage = () => {
         >
         </div>
         <h3>{"Learning Resources"}</h3>
-        <p>{"Most of social science is stories and "}</p>
+        <p>{"Most of social science is stories and facts. And we will help you remember them using technology aided learning. "}</p>
         <div
           style={{
             display: "flex",
