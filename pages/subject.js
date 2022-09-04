@@ -21,7 +21,7 @@ export default function Resource({ records }) {
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
       </Head>
       <main className={styles.main}>
-        <h1 className={styles.title}>naeRaste │ ✍️</h1>
+        <h1 className={styles.title}>nae raste │ ✍️</h1>
         <p
           style={{
             fontSize: "1.5rem",
@@ -35,27 +35,51 @@ export default function Resource({ records }) {
           {records.fields["Chapter Name"]}
         </p>
         {records.fields.hasOwnProperty("Question (from Notes)") === false ? (
-          <>
-            Nothing here yet!
-            <Image src="/silence.png" alt="No image" width={200} height={200} />
-            <h2>Want to contribute?</h2>
-            <p>
-              Send your questions to{" "}
-              <span>
-                <button className={styles.button}>
-                  <a
-                    href={`https://wa.me/919755992478?text=${encoded}`}
-                    style={{
-                      color: "white",
-                      textDecoration: "none",
-                    }}
-                  >
-                    Ujjwal ↗
-                  </a>
-                </button>
-              </span>
-            </p>
-          </>
+          <div className={styles.practiceCard}>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+              }}
+            >
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                }}
+              >
+                <Image
+                  src="/orbit.svg"
+                  width={50}
+                  height={50}
+                  alt="Orbit Logo"
+                />
+                <h3> Chance to win exciting rewards </h3>
+              </div>
+              <p
+                style={{
+                  paddingLeft: "0.85rem",
+                  fontWeight: "300",
+                }}
+              >
+                Orbit helps you remember important facts and formulas.
+                Currently,{records.fields["Chapter Name"]} contains no
+                questions. Contribute questions and answers and win exciting
+                gifts. 🎁
+              </p>
+              <button className={styles.button}>
+                <a
+                  href={`https://wa.me/919755992478?text=${encoded}`}
+                  style={{
+                    color: "white",
+                    textDecoration: "none",
+                  }}
+                >
+                  Share Qs on WhatsApp
+                </a>
+              </button>
+            </div>
+          </div>
         ) : (
           <>
             <div
@@ -88,6 +112,18 @@ export default function Resource({ records }) {
                 )
               )}
             </orbit-reviewarea>
+            Want to Contribute Questions ?
+            <button className={styles.button}>
+              <a
+                href={`https://wa.me/919755992478?text=${encoded}`}
+                style={{
+                  color: "white",
+                  textDecoration: "none",
+                }}
+              >
+                Share Qs on WhatsApp
+              </a>
+            </button>
           </>
         )}
       </main>

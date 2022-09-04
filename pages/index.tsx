@@ -3,7 +3,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import Link from 'next/link'
-import Newsletter from '../components/newsletter'
+import Script from 'next/script'
 import { useState } from 'react'
 const Home: NextPage = () => {
   const grades = [9,10,11,12];
@@ -43,7 +43,7 @@ const Home: NextPage = () => {
         </div>
 
         <p className={styles.description}>
-          social science <br/><span>
+          <h2>social science <br/></h2><span>
           <label>select your class </label>  
             <select style={{
               width: '100px',
@@ -69,29 +69,49 @@ const Home: NextPage = () => {
           
             </span></p>
         <div className={styles.grid}>
-        <Link href= {
-            {
-              pathname: '/resources',
-              query: {
-                grade: grade
-              }
-            }
-            
-          } >
-            <a className={styles.card}>
-            <Image src="/learn.svg" alt="LEarning resources" width={100} height={100}  priority/>
-
-            <h3 style={{
-              color:'#5967E5'
-            }}>Learning Resources</h3>
-            </a>
+        <div  className={styles.card}>
+          <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          paddingLeft: "0.5rem",
+        }}
+      >
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "space-between",
+            padding: "0.5rem",
+          }}
+        >
+        </div>
+        <h3>{"Learning Resources"}</h3>
+        <p>{"Most of social science is stories and "}</p>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "end",
+          }}
+        >
+          <Link
+            href={{
+              pathname: "/resources",
+              query: { grade: grade },
+            }}
+          >
+            <button className={styles.button}>Explore</button>
           </Link>
+        </div>
          
           
         </div>
+        </div>
+        </div>
       </main>
-
-      <Newsletter />
+      <Script async data-uid="37bab4a468" src="https://artisanal-producer-6695.ck.page/37bab4a468/index.js"></Script>
+      
     </div>
   )
 }

@@ -22,7 +22,7 @@ const Resource = ({ records }) => {
         <link rel="manifest" href="/site.webmanifest" />
       </Head>
       <main className={styles.main}>
-        <h1 className={styles.title}>naeRaste │ ✍️</h1>
+        <h1 className={styles.title}>nae raste │ ✍️</h1>
 
         <div className={styles.grid}>
           {gradefilteredRecords.map((record, index) => (
