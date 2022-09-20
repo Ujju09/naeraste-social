@@ -386,3 +386,50 @@ font-weight: 400;
   padding: 1rem;
   font-size: 1.2rem;
 }
+
+
+.article{
+  --gutterWidth: 1.5rem;
+  --containerWidth: 68.75rem;
+  max-width: var(--containerWidth);
+  padding: 0 var(--gutterWidth);
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 0.8rem;
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+
+}
+
+.article h1{
+   font-weight: 500;
+    letter-spacing: 0.01em;
+    margin-top: 0.25rem;
+    margin-bottom: 0.5rem;
+    font-size: 1.75rem;
+    line-height: 1.2;
+}
+
+.article p{
+  font-size: 1.125rem;
+  line-height: 1.5;
+  font-weight: 300;
+  margin-bottom: 1.25rem;
+  margin-top: 0;
+  font-family: 'Roboto', sans-serif;
+}
+
+.article .date{
+  font-size: 0.875rem;
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+  font-feature-settings: "salt", "ss01", "ss02", "ss03";
+  margin-top: 1rem;
+  margin-bottom: 0.25rem;
+  font-weight: 200;
+}
+
+.article .image{
+  border-radius: 4px;
+}
