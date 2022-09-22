@@ -433,3 +433,7 @@ font-weight: 400;
 .article .image{
   border-radius: 4px;
 }
+
+.article .content{
+  font-weight: 300;
+}
