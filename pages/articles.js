@@ -2,7 +2,7 @@
 
 import { createClient } from "contentful";
 import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
-import { BLOCKS, MARKS } from "@contentful/rich-text-types";
+import { BLOCKS, MARKS, INLINES } from "@contentful/rich-text-types";
 import styles from "../styles/Home.module.css";
 import Image from "next/image";
 
@@ -18,7 +18,9 @@ export default function Articles({ articles }) {
       [BLOCKS.HEADING_5]: (node, next) => `<h5>${next(node.content)}</h5>`,
       [BLOCKS.HEADING_6]: (node, next) => `<h6>${next(node.content)}</h6>`,
       [BLOCKS.PARAGRAPH]: (node, next) => `<p>${next(node.content)}</p>`,
-      [BLOCKS.EMBEDDED_ASSET]: (node) => {},
+      [BLOCKS.EMBEDDED_ASSET]: (node) => {
+        return `<Image src="${node.data.target.fields.file.url}" width = {375} height= {150} alt="Image"/>`;
+      },
       [BLOCKS.UL_LIST]: (node, next) => `<ul>${next(node.content)}</ul>`,
       [BLOCKS.OL_LIST]: (node, next) => `<ol>${next(node.content)}</ol>`,
       [BLOCKS.LIST_ITEM]: (node, next) => `<li>${next(node.content)}</li>`,
@@ -26,6 +28,12 @@ export default function Articles({ articles }) {
         `<blockquote>${next(node.content)}</blockquote>`,
       [BLOCKS.EMBEDDED_ENTRY]: (node) => {},
       [BLOCKS.HR]: () => `<hr />`,
+      [INLINES.HYPERLINK]: (node) => {
+        return `<a href="${node.data.uri}">${node.content[0].value}</a>`;
+      },
+      [INLINES.ENTRY_HYPERLINK]: (node) => {
+        return `<a href="${node.data.uri}">${node.content[0].value}</a>`;
+      },
     },
   };
   return (
