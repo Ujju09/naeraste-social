@@ -6,12 +6,11 @@ import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
 import { BLOCKS, INLINES } from "@contentful/rich-text-types";
 import Image from "next/image";
 
-export const client = createClient({
-  space: process.env.CONTENTFUL_SPACE_ID,
-  accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
-});
-
 export const getStaticPaths = async () => {
+  const client = createClient({
+    space: process.env.CONTENTFUL_SPACE_ID,
+    accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
+  });
   const res = await client.getEntries({
     content_type: "booksInShort",
   });
@@ -27,6 +26,10 @@ export const getStaticPaths = async () => {
 };
 
 export const getStaticProps = async (context) => {
+  const client = createClient({
+    space: process.env.CONTENTFUL_SPACE_ID,
+    accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
+  });
   const { params } = context;
   const { items } = await client.getEntries({
     content_type: "booksInShort",
