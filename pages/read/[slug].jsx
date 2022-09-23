@@ -42,7 +42,7 @@ export const getStaticProps = async (context) => {
 }
 
 
-const Blog = ({blog}) => {
+const Read = ({blog}) => {
     const {title, summary, image} = blog.fields;
     const options = {
         renderNode: {
@@ -99,4 +99,4 @@ const Blog = ({blog}) => {
 
 
 
-export default Blog;
+export default Read;
