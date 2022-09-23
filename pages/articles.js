@@ -11,7 +11,7 @@ export default function Articles({ articles }) {
     <main className={styles.main}>
       <h1>Summaries</h1>
       {articles.map((article) => (
-        <Link href={`/blog/${article.fields.slug}`} key={article.fields.id}>
+        <Link href={`/read/${article.fields.slug}`} key={article.fields.id}>
           <div className={styles.article}>
             <Image
               src={`https:${article.fields.image.fields.file.url}`}
