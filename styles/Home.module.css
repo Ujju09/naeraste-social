@@ -12,6 +12,8 @@
   justify-content: flex-start;
   align-items: center;
   font-family: 'Lexend', monospace;
+  -webkit-overflow-scrolling: touch;
+  overflow-y: auto;
 }
 
 .title h2{
@@ -399,6 +401,8 @@ font-weight: 400;
   align-items: flex-start;
   display: flex;
   flex-direction: column;
+  text-rendering: optimizeLegibility;
+  font-family: 'Roboto', sans-serif;
 
 }
 
@@ -409,6 +413,7 @@ font-weight: 400;
     margin-bottom: 0.5rem;
     font-size: 1.75rem;
     line-height: 1.2;
+
 }
 
 .article p{
