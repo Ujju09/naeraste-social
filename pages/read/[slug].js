@@ -9,7 +9,7 @@ import Image from "next/image";
 export const getStaticPaths = async () => {
   const client = createClient({
     space: process.env.CONTENTFUL_SPACE_ID,
-    accessToken: process.env.CONTENTFUL_PREVIEW_ACCESS_TOKEN,
+    accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
   });
   const res = await client.getEntries({
     content_type: "booksInShort",
