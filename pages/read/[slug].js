@@ -5,6 +5,7 @@ import styles from "../../styles/Home.module.css";
 import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
 import { BLOCKS, INLINES } from "@contentful/rich-text-types";
 import Image from "next/image";
+import Head from "next/head";
 
 export const getStaticPaths = async () => {
   const client = createClient({
@@ -75,6 +76,17 @@ const Read = ({ blog }) => {
   };
   return (
     <div className={styles.container}>
+      <Head>
+        <meta property="og:image" content={"https:" + image.fields.file.url} />
+
+        <meta property="og:title" content="Science of Mind Management" />
+
+        <meta property="og:description" content="The power of intellect" />
+
+        <meta property="og:image:width" content="375" />
+
+        <meta property="og:image:height" content="150" />
+      </Head>
       <main className={styles.main}>
         <h1
           style={{
