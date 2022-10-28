@@ -97,14 +97,6 @@ const Read = ({ blog }) => {
           {title}
         </h1>
         <article className={styles.article}>
-          <div className={styles.image}>
-            <Image
-              src={"https:" + image.fields.file.url}
-              width={375}
-              height={150}
-              alt="Image"
-            />
-          </div>
           <div
             dangerouslySetInnerHTML={{
               __html: documentToHtmlString(summary, options),
