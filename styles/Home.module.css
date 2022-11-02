@@ -11,7 +11,7 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  font-family: 'Lexend', monospace;
+  font-family: 'Lexend', sans-serif, Arial, Helvetica, sans-serif;
   -webkit-overflow-scrolling: touch;
   overflow-y: auto;
 }
@@ -75,7 +75,16 @@ font-weight: 400;
   font-family: 'Lexend', monospace;
 }
 
+.iframe{
+  width: 100%;
+  height: 500px;
 
+  border-radius: 1px;
+  
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+
+}
 
 .questionCard{
   width: 65%;
@@ -279,6 +288,28 @@ font-weight: 400;
     width:100%;
     padding: 1.2rem;
   }
+}
+
+.videoCard {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #B8BCC1;
+  border-radius: 12;
+  margin: 0.4rem;
+  width: 90%;
+  padding: 0.1rem;
+  text-align: left;
+}
+
+.videoCard h3{
+  font-weight: 300;
+
+}
+
+.videoCard caption{
+  text-align: left;
+  font-weight: 200;
+  color: #8B8080;
 }
 
 .submitButton{
