@@ -79,9 +79,9 @@ const Read = ({ blog }) => {
       <Head>
         <meta property="og:image" content={"https:" + image.fields.file.url} />
 
-        <meta property="og:title" content="Science of Mind Management" />
+        <meta property="og:title" content={title} />
 
-        <meta property="og:description" content="The power of intellect" />
+        <meta property="og:description" content={summary} />
 
         <meta property="og:image:width" content="375" />
 
