@@ -46,7 +46,7 @@ export const getStaticProps = async (context) => {
 };
 
 const Read = ({ blog }) => {
-  const { title, summary, image } = blog.fields;
+  const { title, summary, image, brief } = blog.fields;
   const options = {
     renderNode: {
       [BLOCKS.HEADING_1]: (node, next) => `<h1>${next(node.content)}</h1>`,
@@ -81,7 +81,7 @@ const Read = ({ blog }) => {
 
         <meta property="og:title" content={title} />
 
-        <meta property="og:description" content={summary} />
+        <meta property="og:description" content={brief} />
 
         <meta property="og:image:width" content="375" />
 
