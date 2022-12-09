@@ -131,49 +131,57 @@ export default function Resource({ records }) {
             <></>
           ) : (
             <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                justifyContent: "center",
-                textAlign: "center",
-              }}
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "center",
+              textAlign: "center",
+            }} 
             >
               <h3>
                 Videos on {records.fields["Chapter Name"]}, that we think
                 you&apos;ll love.
               </h3>
+              <div className= {styles.videoGrid}>
               {
+                
                 records.fields['Title (from Video Links)'].map((title,index)=>(
                 
-                  <div key={index} className={styles.videoCard}>
-                 
-                    <h3>
-                      {title}
-                    </h3>
-                    
-                      {
-                        <caption>
-                          {records.fields['Tags (from Video Links)'][index]}
-                        </caption>
-                      
-                      }
-                    
-                    <iframe
-                  key={index}
-                  src={records.fields['URL (from Video Links)'][index]}
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                  className={styles.iframe}
-                ></iframe>
                   
-                  </div>
+                    <div key={index} className={styles.videoCard}>
+                 
+                 <h3>
+                   {title}
+                 </h3>
+                 
+                   {
+                     <caption>
+                       {records.fields['Tags (from Video Links)'][index]}
+                     </caption>
+                   
+                   }
+                 
+                 <iframe
+               key={index}
+               src={records.fields['URL (from Video Links)'][index]}
+               frameBorder="0"
+               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+               allowFullScreen
+               className={styles.iframe}
+             ></iframe>
+               
+               </div>
+
+                
                 ))
               }
+
              
             </div>
+            </div>
           )}
+          
         </div>
         </section>
       </main>
