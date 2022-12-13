@@ -8,10 +8,6 @@ const nextConfig = {
   images: {
     domains: ["images-na.ssl-images-amazon.com", "images.ctfassets.net"],
   },
-  experimental: {
-    appDir: true,
-
-  },
 };
 
 module.exports = nextConfig;
