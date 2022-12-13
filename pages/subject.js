@@ -1,19 +1,25 @@
 /** @format */
 
 import styles from "../styles/Home.module.css";
-import Image from "next/image";
+import VideosList from "../components/video_lists";
 import Head from "next/head";
-import Script from "next/script";
+import OrbitList from "../components/orbit_page";
+import Image from "next/image";
+import { useState } from "react";
+import QuestionSets from "../components/question_sets";
+import NotesList from "../components/notes_list";
+
 
 export default function Resource({ records }) {
-  const helpText = `I want to share ${records.fields["Chapter Name"]} questions with you.`;
-  const encoded = encodeURI(helpText);
+
+  const [active, setActive] = useState(1);
+  const handleClick = (e, n) => {
+    e.preventDefault();
+    setActive(n);
+  }
+
   return (
     <div className={styles.container}>
-      <Script
-        type="module"
-        src="https://js.withorbit.com/orbit-web-component.js"
-      />
       <Head>
         <title>{records.fields["Chapter Name"]}</title>
         <link rel="icon" href="/favicon.ico" />
@@ -21,10 +27,27 @@ export default function Resource({ records }) {
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
       </Head>
       <main className={styles.main}>
+      <div className={styles.title}>
+          <div style={{
+            display: 'flex',
+            flexDirection: 'row',
+            justifyContent: 'flex-end',
+            paddingLeft: '0.5rem',
+            paddingRight: '0.5rem',
+
+            
+          }}>
+            <Image src="/bookmark-orange.png" alt="näraste" width={39.68} height={50} />
+          </div>
+        
+        
+        </div>
+
         <p
           style={{
             fontSize: "1.5rem",
             fontWeight: "bold",
+            paddingTop:"3rem",
             marginBottom: "1rem",
             marginTop: "1rem",
             textAlign: "center",
@@ -33,157 +56,41 @@ export default function Resource({ records }) {
         >
           {records.fields["Chapter Name"]}
         </p>
-        {records.fields.hasOwnProperty("Question (from Notes)") === false ? (
-          <div className={styles.practiceCard}>
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-              }}
-            >
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "row",
-                }}
-              >
-                <Image
-                  src="/orbit.svg"
-                  width={50}
-                  height={50}
-                  alt="Orbit Logo"
-                />
-                <h3> Chance to win exciting rewards </h3>
-              </div>
-              <p
-                style={{
-                  paddingLeft: "0.85rem",
-                  fontWeight: "300",
-                }}
-              >
-                Orbit helps you remember important facts and formulas.
-                Currently,{records.fields["Chapter Name"]} contains no
-                questions. Contribute questions and answers and win exciting
-                gifts. 🎁
-              </p>
-              <button className={styles.button}>
-                <a
-                  href={`https://wa.me/919755992478?text=${encoded}`}
-                  style={{
-                    color: "white",
-                    textDecoration: "none",
-                  }}
-                >
-                  Share Qs on WhatsApp
-                </a>
-              </button>
-            </div>
+        <div className={styles.topicList}>
+          <div  className={
+            active === 1 ? styles.topicActive : styles.topic
+          } onClick={(e)=> handleClick(e,1)}>
+            Videos
           </div>
-        ) : (
-          <>
-            <div
-              style={{
-                display: "flex",
-                marginBottom: "1rem",
-              }}
-            >
-              <Image
-                src="/orbit.svg"
-                alt="Orbit image"
-                width={100}
-                height={100}
-              />
-              <p>Deeply internalize ideas and facts through periodic review.</p>
+          <div className={
+            active === 2 ? styles.topicActive : styles.topic
+          } onClick={(e)=> handleClick(e,2)} >
+            Orbit
             </div>
-            <orbit-reviewarea
-              color="orange"
-              style={{
-                width: "100%",
-              }}
-            >
-              {records.fields["Question (from Notes)"].map(
-                (question, index) => (
-                  <orbit-prompt
-                    question={question}
-                    answer={records.fields["Answer (from Notes)"][index]}
-                    key={index}
-                  ></orbit-prompt>
-                )
-              )}
-            </orbit-reviewarea>
-            Want to Contribute Questions ?
-            <button className={styles.button}>
-              <a
-                href={`https://wa.me/919755992478?text=${encoded}`}
-                style={{
-                  color: "white",
-                  textDecoration: "none",
-                }}
-              >
-                Share Qs on WhatsApp
-              </a>
-            </button>
-          </>
-        )}
-        <section>
-        <div className={styles.grid}>
-          {records.fields.hasOwnProperty("Video Links") === false ? (
-            <></>
-          ) : (
-            <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              justifyContent: "center",
-              textAlign: "center",
-            }} 
-            >
-              <h3>
-                Videos on {records.fields["Chapter Name"]}, that we think
-                you&apos;ll love.
-              </h3>
-              <div className= {styles.videoGrid}>
-              {
-                
-                records.fields['Title (from Video Links)'].map((title,index)=>(
-                
-                  
-                    <div key={index} className={styles.videoCard}>
-                 
-                 <h3>
-                   {title}
-                 </h3>
-                 
-                   {
-                     <caption>
-                       {records.fields['Tags (from Video Links)'][index]}
-                     </caption>
-                   
-                   }
-                 
-                 <iframe
-               key={index}
-               src={records.fields['URL (from Video Links)'][index]}
-               frameBorder="0"
-               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-               allowFullScreen
-               className={styles.iframe}
-             ></iframe>
-               
-               </div>
-
-                
-                ))
-              }
-
-             
+          <div className={
+            active === 3 ? styles.topicActive : styles.topic
+          } onClick={(e)=> handleClick(e,3)}>
+            Question Sets
             </div>
+            <div className={
+            active === 4 ? styles.topicActive : styles.topic
+          } onClick={(e)=> handleClick(e,4)}>
+              Notes
             </div>
-          )}
-          
         </div>
-        </section>
+       {
+        active === 1 ? <VideosList records={records} /> : <></>
+       }
+        {
+        active === 2 ? <OrbitList records={records} />: <></>
+       }
+       {
+        active === 3 ? <QuestionSets/> : <></>
+       }
+       {
+        active === 4 ? <NotesList/> : <></>
+       }
+        
       </main>
     </div>
   );

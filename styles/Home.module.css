@@ -495,6 +495,42 @@ font-weight: 400;
 }
 
 
+.topicList{
+  padding-top: 1rem;
+  display: flex;
+  gap: 0.5rem;
+  flex-direction: row;
+  justify-content: left;
+  overflow-x: auto;
+  flex-wrap: nowrap;
+}
 
+.topic{
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  border-radius: 0.2rem;
+  background-color: rgb(217, 217, 217, 0.47);
+  color: #8B8080;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  font-family: 'Lexend', monospace;
+  box-sizing: border-box;
+}
 
+.topicActive{
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  border-radius: 0.2rem;
+  background-color: rgb(217, 217, 217, 0.47);
+  color: #8B8080;
+  border: solid 2px #f2b61e;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  font-family: 'Lexend', monospace;
+  box-sizing: border-box;
+}
 
